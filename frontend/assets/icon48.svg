@@ -1,0 +1,6 @@
+<svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+  <rect width="48" height="48" fill="#1976d2" rx="8"/>
+  <circle cx="24" cy="24" r="18" fill="white" opacity="0.1"/>
+  <text x="24" y="30" text-anchor="middle" fill="white" font-family="Arial" font-size="20" font-weight="bold">比价</text>
+  <path d="M12 12 L36 12 L34 18 L14 18 Z" fill="white" opacity="0.8"/>
+</svg>

@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "商品比价助手",
+  "version": "1.0.0",
+  "description": "一键比较京东、淘宝、拼多多、1688商品价格，快速找到最优惠的商品",
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "http://localhost:3000/*",
+    "https://localhost:3000/*"
+  ],  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "商品比价助手"
+  },
+  "icons": {
+    "16": "assets/icon16.svg",
+    "32": "assets/icon32.svg", 
+    "48": "assets/icon48.svg",
+    "128": "assets/icon128.svg"
+  },
+  "background": {
+    "service_worker": "utils/background.js"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["assets/*"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>商品比价助手</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <!-- 头部 -->
+  <header class="header">
+    <div class="header-content">
+      <h1 class="title">
+        <span class="icon">🛒</span>
+        商品比价助手
+      </h1>
+      <div class="version">v1.0.0</div>
+    </div>
+  </header>
+
+  <!-- 搜索区域 -->
+  <section class="search-section">
+    <div class="search-container">
+      <div class="search-input-group">
+        <input 
+          type="text" 
+          id="searchInput" 
+          class="search-input" 
+          placeholder="请输入商品名称，如：蓝牙耳机、笔记本电脑"
+          maxlength="50"
+        >
+        <button id="clearBtn" class="clear-btn" title="清空输入">×</button>
+      </div>
+      
+      <div class="search-options">
+        <div class="platform-selection">
+          <span class="label">搜索平台：</span>
+          <div class="platform-checkboxes">
+            <label class="platform-checkbox">
+              <input type="checkbox" value="jd" checked>
+              <span class="platform-name jd">京东</span>
+            </label>
+            <label class="platform-checkbox">
+              <input type="checkbox" value="taobao" checked>
+              <span class="platform-name taobao">淘宝</span>
+            </label>
+            <label class="platform-checkbox">
+              <input type="checkbox" value="pdd" checked>
+              <span class="platform-name pdd">拼多多</span>
+            </label>
+            <label class="platform-checkbox">
+              <input type="checkbox" value="ali1688" checked>
+              <span class="platform-name ali1688">1688</span>
+            </label>
+          </div>
+        </div>
+        
+        <div class="search-settings">
+          <label class="setting-item">
+            <span>商品数量：</span>
+            <select id="limitSelect" class="limit-select">
+              <option value="3">3个</option>
+              <option value="5" selected>5个</option>
+              <option value="10">10个</option>
+            </select>
+          </label>
+        </div>
+      </div>
+      
+      <button id="searchBtn" class="search-btn">
+        <span class="btn-text">搜索比价</span>
+        <span class="loading-spinner"></span>
+      </button>
+    </div>
+    
+    <!-- 搜索历史 -->
+    <div id="searchHistory" class="search-history" style="display: none;">
+      <div class="history-header">
+        <span>搜索历史</span>
+        <button id="clearHistoryBtn" class="clear-history-btn">清空</button>
+      </div>
+      <div id="historyList" class="history-list"></div>
+    </div>
+  </section>
+
+  <!-- 结果区域 -->
+  <section id="resultsSection" class="results-section" style="display: none;">
+    <!-- 搜索摘要 -->
+    <div id="searchSummary" class="search-summary"></div>
+    
+    <!-- 商品结果 -->
+    <div id="results" class="results-container"></div>
+    
+    <!-- 价格对比表 -->
+    <div id="priceComparison" class="price-comparison" style="display: none;">
+      <h3>价格对比</h3>
+      <div id="comparisonTable" class="comparison-table"></div>
+    </div>
+  </section>
+
+  <!-- 状态区域 -->
+  <section id="statusSection" class="status-section">
+    <!-- 加载状态 -->
+    <div id="loadingStatus" class="loading-status" style="display: none;">
+      <div class="loading-animation">
+        <div class="loading-dots">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+      <div class="loading-text">正在搜索商品...</div>
+      <div class="loading-progress">
+        <div class="progress-bar">
+          <div id="progressFill" class="progress-fill"></div>
+        </div>
+        <div id="progressText" class="progress-text">0%</div>
+      </div>
+    </div>
+    
+    <!-- 错误状态 -->
+    <div id="errorStatus" class="error-status" style="display: none;">
+      <div class="error-icon">⚠️</div>
+      <div id="errorMessage" class="error-message"></div>
+      <button id="retryBtn" class="retry-btn">重试</button>
+    </div>
+    
+    <!-- 空结果状态 -->
+    <div id="emptyStatus" class="empty-status" style="display: none;">
+      <div class="empty-icon">🔍</div>
+      <div class="empty-message">未找到相关商品</div>
+      <div class="empty-tips">
+        <p>建议：</p>
+        <ul>
+          <li>尝试更换关键词</li>
+          <li>使用更通用的商品名称</li>
+          <li>检查拼写是否正确</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 底部信息 -->
+  <footer class="footer">
+    <div class="footer-links">
+      <button id="settingsBtn" class="footer-btn">设置</button>
+      <button id="feedbackBtn" class="footer-btn">反馈</button>
+      <button id="aboutBtn" class="footer-btn">关于</button>
+    </div>
+    <div class="footer-info">
+      <span class="api-status" id="apiStatus">API: 连接中...</span>
+    </div>
+  </footer>
+
+  <!-- 工具提示 -->
+  <div id="tooltip" class="tooltip" style="display: none;"></div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
