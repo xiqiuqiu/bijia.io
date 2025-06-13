@@ -18,16 +18,17 @@
   "author": "Your Name",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.18.2",
+    "chrome-finder": "^1.0.7",
     "cors": "^2.8.5",
+    "express": "^4.18.2",
     "express-rate-limit": "^6.7.0",
     "puppeteer": "^21.0.0",
     "puppeteer-extra": "^3.3.6",
     "puppeteer-extra-plugin-stealth": "^2.11.2"
   },
   "devDependencies": {
-    "nodemon": "^3.0.1",
     "jest": "^29.5.0",
+    "nodemon": "^3.0.1",
     "supertest": "^6.3.3"
   },
   "engines": {
